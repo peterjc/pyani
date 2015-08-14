@@ -30,7 +30,7 @@ import pyani_files
 import pyani_jobs
 
 # Generate list of Job objects, one per NUCmer run
-def generate_nucmer_jobs(filenames, outdir='.',
+def generate_jobs(filenames, outdir='.',
                          nucmer_exe=pyani_config.NUCMER_DEFAULT,
                          maxmatch=False):
     """Return a list of Jobs describing NUCmer command-lines for ANIm
@@ -119,7 +119,7 @@ def parse_delta(filename):
 
 
 # Parse all the .delta files in the passed directory
-def process_deltadir(delta_dir, org_lengths):
+def process_deltadir(seqfiles, delta_dir):
     """Returns a tuple of ANIm results for .deltas in passed directory.
 
     - delta_dir - path to the directory containing .delta files
@@ -136,6 +136,8 @@ def process_deltadir(delta_dir, org_lengths):
     May throw a ZeroDivisionError if one or more NUCmer runs failed, or a
     very distant sequence was included in the analysis.
     """
+    # Get organism lengths from passed sequence files
+    org_lengths = pyani_files.get_sequence_lengths(seqfiles)
     # Process directory to identify input files
     deltafiles = pyani_files.get_input_files(delta_dir, '.delta')
     labels = org_lengths.keys()

@@ -324,9 +324,9 @@ def calculate_anim(infiles, org_lengths):
     logger.info("Generating NUCmer command-lines")
     # Schedule NUCmer runs
     if not args.skip_nucmer:
-        joblist = anim.generate_nucmer_jobs(infiles, args.outdirname,
-                                            nucmer_exe=args.nucmer_exe,
-                                            maxmatch=args.maxmatch)
+        joblist = anim.generate_jobs(infiles, args.outdirname,
+                                     nucmer_exe=args.nucmer_exe,
+                                     maxmatch=args.maxmatch)
         if args.scheduler == 'multiprocessing':
             logger.info("Running jobs with multiprocessing")
             cumval = run_mp.run_dependency_graph(joblist, verbose=args.verbose,
@@ -347,7 +347,7 @@ def calculate_anim(infiles, org_lengths):
     # Process resulting .delta files
     logger.info("Processing NUCmer .delta files.")
     try:
-        data = anim.process_deltadir(args.outdirname, org_lengths)
+        data = anim.process_deltadir(infiles, args.outdirname)
     except ZeroDivisionError:
         logger.error("One or more NUCmer output files has a problem.")
         if not args.skip_nucmer:
