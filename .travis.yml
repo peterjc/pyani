@@ -13,6 +13,9 @@ python:
   - "3.5"
 
 before_install:
+  - "sudo apt-get install blast2"
+  - "sudo apt-get install ncbi-blast+"
+  - "sudo apt-get install mummer"
   - "sudo apt-get install r-base r-base-dev"
   - "pip install -r requirements.txt"
 
