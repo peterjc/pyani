@@ -1,0 +1,12 @@
+# List of python modules required,
+# intended for use with "pip install -r requirements.txt"
+
+# Core Python requirements:
+numpy
+scipy
+pandas
+biopython
+
+# For graphical output:
+rpy2
+matplotlib
