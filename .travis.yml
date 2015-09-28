@@ -6,10 +6,14 @@ language: r
 sudo: required
 
 before_install:
-  - "sudo pip install -r requirements.txt"
   - "sudo apt-get install ncbi-blast"
   - "sudo apt-get install ncbi-blast+"
   - "sudo apt-get install mummer"
+  - "sudo apt-get install python-numpy"
+  - "sudo apt-get install python-scipy"
+  - "sudo apt-get install python-pandas"
+  - "sudo apt-get install python-matplotlib"
+  - "sudo pip install -r requirements.txt"
 
 install:
   - "sudo python setup.py install"
