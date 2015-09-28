@@ -6,7 +6,7 @@ language: r
 sudo: required
 
 before_install:
-  - "sudo apt-get install ncbi-blast"
+  - "sudo apt-get install blast2"
   - "sudo apt-get install ncbi-blast+"
   - "sudo apt-get install mummer"
   - "sudo apt-get install python-numpy"
