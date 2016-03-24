@@ -1,0 +1,37 @@
+#Special configuration file to run tests on Travis-CI via GitHub notifications
+#See http://travis-ci.org/ for details
+#
+#Note when testing Python 3, the 'python' command will invoke Python 3
+#and similarly for 'pip' too.
+
+language: python
+python:
+  - "2.6"
+  - "2.7"
+  - "3.4"
+  - "3.5"
+
+sudo: false
+addons:
+  apt:
+    packages:
+    - ncbi-blast+
+    - r-base
+    - r-base-dev
+
+#TODO, can we get these whitelisted?
+#  - "sudo apt-get install blast2"
+#  - "sudo apt-get install mummer"
+
+before_install:
+  - "pip install --upgrade pip"
+  - "pip install -r requirements.txt"
+
+install:
+  - "python setup.py install"
+
+script:
+  - make test
+
+notifications:
+  email: false
