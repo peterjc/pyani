@@ -16,6 +16,8 @@ addons:
   apt:
     packages:
     - ncbi-blast+
+    - libblas-dev
+    - liblapack-dev
 
 #TODO, R 2.14.1 is too old for rpy2
 #    - r-base
