@@ -16,6 +16,7 @@ addons:
   apt:
     packages:
     - ncbi-blast+
+    - gfortran
     - libblas-dev
     - liblapack-dev
 
