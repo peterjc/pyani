@@ -11,6 +11,8 @@ For parallelisation on multi-node system, we use some custom code to submit
 jobs.
 """
 
+from __future__ import print_function
+
 import pyani_config
 
 import os
@@ -150,7 +152,7 @@ def submit_safe_jobs(root_dir, jobs):
       # Build the qsub SGE commandline (passing local environment)
       qsubcmd = ("%s -V %s %s" % \
                  (pyani_config.QSUB_DEFAULT, args, job.scriptPath)) 
-      #print qsubcmd                   # Show the command to the user
+      #print(qsubcmd)                  # Show the command to the user
       os.system(qsubcmd)               # Run the command
       job.submitted = True             # Set the job's submitted flag to True
 
