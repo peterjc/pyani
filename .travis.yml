@@ -15,7 +15,6 @@ addons:
   apt:
     packages:
     - ncbi-blast+
-    - gfortran
     - libblas-dev
     - liblapack-dev
 
@@ -32,7 +31,7 @@ before_install:
   - "pip install --upgrade pip"
   - "grep -v rpy2 requirements.txt > requirements2.txt"
   - "mv requirements2.txt requirements.txt"
-  - "pip install -r requirements.txt"
+  - "pip install -r requirements.txt --timeout 60 --trusted-host travis-wheels.scikit-image.org -f http://travis-wheels.scikit-image.org/"
 
 install:
   - "python setup.py install"
