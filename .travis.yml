@@ -16,16 +16,20 @@ addons:
   apt:
     packages:
     - ncbi-blast+
-    - r-base
-    - r-base-dev
+
+#TODO, R 2.14.1 is too old for rpy2
+#    - r-base
+#    - r-base-dev
 
 #TODO, can we get these whitelisted?
 #  - "sudo apt-get install blast2"
 #  - "sudo apt-get install mummer"
 
+
 before_install:
   - "pip install --upgrade pip"
-  - "pip install -r requirements.txt"
+  - "grep -v rpy2 requirements.txt > requirements2.txt"
+  - "pip install -r requirements2.txt"
 
 install:
   - "python setup.py install"
